@@ -49,6 +49,14 @@ body {
 
 /* --- GAMECARDS --- */
 
+.games-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
 .suggested-cards {
   display: flex;
   flex-wrap: wrap;
@@ -303,13 +311,11 @@ footer a {
   scroll-snap-type: x mandatory;
 }
 
-.category-section {
-  margin-bottom: 2rem;
-}
-
 .category-section h2 {
   color: white;
   text-align: center;
+  color: var(--orange);
+  font-size: 2rem;
 }
 
 .genre-item {
@@ -320,7 +326,7 @@ footer a {
   overflow: hidden;
   background: var(--bleu-clair);
   color: var(--orange);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .genre-image-wrapper {
@@ -336,7 +342,6 @@ footer a {
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
-
 .genre-image {
   width: 100%;
   height: 100%;
@@ -630,6 +635,41 @@ footer a {
 .pub h3 {
   color: var(--orange);
 }
+/*---------------------- Details Genre---------------------------------*/
+
+.gamesDetails img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+.Detail-img {
+  height: 30vh;
+}
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  padding: 1rem;
+}
+.gamesDetails h1 {
+  text-align: center;
+  color: var(--orange);
+  font-size: 3rem;
+}
+.gamesDetails p {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  width: auto;
+  text-align: left;
+  font-style: italic;
+}
+
+/*------------------------- Media ----------------------*/
 
 /* ------ SCROLL TO TOP --------- */
 

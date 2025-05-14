@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 type Genre = {
   id: number;
@@ -19,7 +20,7 @@ const Categories = () => {
         );
         const data = await response.json();
         console.log(data.results);
-        setGenres(data.results); // ajuste selon la réponse réelle
+        setGenres(data.results);
       } catch (err) {
         setError("Erreur lors du chargement ");
       } finally {
@@ -37,16 +38,18 @@ const Categories = () => {
     <section className="category-section">
       <h2>Les catégories</h2>
       <div className="horizontal-scroll">
-        {genres?.map((genre) => (
+        {genres.map((genre) => (
           <div key={genre.id} className="genre-item">
-            <div className="genre-image-wrapper">
-              <img
-                src={genre.image_background}
-                alt={genre.name}
-                className="genre-image"
-              />
-              <div className="genre-name">{genre.name}</div>
-            </div>
+            <Link to={`/genre/${genre.id}`} className="genre-link">
+              <div className="genre-image-wrapper">
+                <img
+                  src={genre.image_background}
+                  alt={genre.name}
+                  className="genre-image"
+                />
+                <div className="genre-name">{genre.name}</div>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

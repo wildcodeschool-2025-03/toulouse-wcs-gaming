@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import favicon from "../assets/images/favicon.svg";
-import SearchBar from "../components/SearchBar";
 import type { Game } from "../services/UseFetchGames";
+import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 
 function NavBar() {
