@@ -30,22 +30,6 @@ function GameDetail() {
 
   useEffect(() => {
     const fetchGameDescription = async () => {
-      const cacheKey = `game-${id}`;
-      const cached = localStorage.getItem(cacheKey);
-      const cacheTime = localStorage.getItem(`${cacheKey}-timestamp`);
-
-      const sixHours = 6 * 60 * 60 * 1000;
-
-      if (
-        cached &&
-        cacheTime &&
-        Date.now() - Number.parseInt(cacheTime) < sixHours
-      ) {
-        const parsed = JSON.parse(cached);
-        setDescription(parsed.description);
-        return;
-      }
-
       try {
         const response = await fetch(
           `https://api.rawg.io/api/games/${id}?key=4bc0720168eb4f3a87dbdfbb61bc3461`,
@@ -53,8 +37,7 @@ function GameDetail() {
         const data = await response.json();
 
         setDescription(data.description);
-        localStorage.setItem(cacheKey, JSON.stringify(data));
-        localStorage.setItem(`${cacheKey}-timestamp`, Date.now().toString());
+        console.log(data);
       } catch (error) {
         console.error("Erreur lors du fetch :", error);
       }

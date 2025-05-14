@@ -20,30 +20,21 @@ function UseFetchGames() {
 
   useEffect(() => {
     const fetchGames = async () => {
-      try {
-        const cached = localStorage.getItem("gamesData");
-        const cacheTime = localStorage.getItem("gamesDataTimestamp");
+      const storedGames = localStorage.getItem("games");
 
-        if (
-          cached &&
-          cacheTime &&
-          Date.now() - Number.parseInt(cacheTime) < 6 * 60 * 60 * 1000
-        ) {
-          const parsed = JSON.parse(cached);
-          setGames(parsed);
-          return;
+      if (storedGames) {
+        setGames(JSON.parse(storedGames));
+      } else {
+        let allGames: Game[] = [];
+        for (let page = 1; page <= 20; page++) {
+          const response = await fetch(
+            `https://api.rawg.io/api/games?key=4bc0720168eb4f3a87dbdfbb61bc3461&page=${page}&page_size=20`,
+          );
+          const data = await response.json();
+          allGames = [allGames, data.results];
         }
-
-        const response = await fetch(
-          "https://api.rawg.io/api/games?key=4bc0720168eb4f3a87dbdfbb61bc3461",
-        );
-        const data = await response.json();
-
-        setGames(data.results);
-        localStorage.setItem("gamesData", JSON.stringify(data.results));
-        localStorage.setItem("gamesDataTimestamp", Date.now().toString());
-      } catch (error) {
-        console.error("Erreur lors du fetch :", error);
+        setGames(allGames);
+        localStorage.setItem("games", JSON.stringify(allGames));
       }
     };
 

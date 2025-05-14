@@ -25,7 +25,7 @@ p {
 }
 
 body {
-  background: linear-gradient(to right, #0a0f2c, #1e2a5a, #0a0f2c);
+  background: linear-gradient(to right, #050817, #1b254d, #050817);
 }
 
 /* --- NAVIGATION --- */
@@ -644,7 +644,19 @@ footer a {
   border: none;
   border-radius: 50%;
   opacity: 0.7;
-  font-weight: 1000;
+  cursor: pointer;
+}
+
+/* -------- HORROR SECTION -------*/
+
+.horror-section {
+  height: 40vh;
+  padding: 3vw;
+  margin: 10vh 0;
+}
+
+.horror-section .pub-text {
+  color: white;
 }
 
 @media screen and (min-width: 768px) {
@@ -735,5 +747,27 @@ footer a {
     height: 90vh;
     clip-path: polygon(0% 10%, 100% 0, 100% 100%, 0 90%);
     margin: 15vh 0;
+  }
+
+  .horror-section {
+    position: relative;
+    height: 80vh;
+    background-blend-mode: multiply;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .torch-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    transition: mask-image 0.2s ease;
+    z-index: 1;
+  }
+
+  .horror-section .pub-text {
+    position: relative;
+    z-index: 2; /* Assure que le texte soit au-dessus de l'overlay */
   }
 }

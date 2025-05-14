@@ -3,6 +3,7 @@ import "./App.css";
 import Categories from "./components/Category";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import HorrorSection from "./components/HorrorSection";
 import MostPopular from "./components/MostPopular";
 import NavBar from "./components/Navbar";
 import NewSection from "./components/NewSection";
@@ -19,6 +20,7 @@ function App() {
       <TopGames />
       <Pub />
       <MostPopular />
+      <HorrorSection />
       <Footer />
     </>
   );

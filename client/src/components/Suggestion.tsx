@@ -21,7 +21,7 @@ function Suggestion() {
     <div className="suggestion-container">
       <h2>Découvrez des titres similaires :</h2>
       <div className="suggested-cards">
-        {suggestedGame.map((game) => (
+        {suggestedGame.slice(0, 50).map((game) => (
           <button
             key={game.id}
             type="button"
