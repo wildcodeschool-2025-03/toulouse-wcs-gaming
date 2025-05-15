@@ -11,7 +11,7 @@ export interface Game {
   suggestions_count: number;
   parent_platforms: { platform: { name: string; id: string } }[];
   genres: { name: string; image_background: string }[];
-  esrb_rating: { name: string };
+  esrb_rating: { id: number; name: string };
   short_screenshots: { image: string; id: number }[];
 }
 
@@ -31,7 +31,12 @@ function UseFetchGames() {
             `https://api.rawg.io/api/games?key=4bc0720168eb4f3a87dbdfbb61bc3461&page=${page}&page_size=20`,
           );
           const data = await response.json();
-          allGames = [allGames, data.results];
+
+          const filteredgames = data.results.filter((game: Game) => {
+            return game.esrb_rating !== null && game.esrb_rating?.id !== 5;
+          });
+
+          allGames = [filteredgames];
         }
         setGames(allGames);
         localStorage.setItem("games", JSON.stringify(allGames));

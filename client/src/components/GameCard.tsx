@@ -29,6 +29,8 @@ function GameCard({ game }: gameProps) {
     return key in platformIcons;
   }
 
+  console.log(game);
+
   return (
     <Link to={`/jeu/${game.id}`} className="card-link">
       <div key={game.id} className="card-body">
@@ -37,11 +39,11 @@ function GameCard({ game }: gameProps) {
         </div>
         <div className="card-info">
           <h3>{game.name}</h3>
-          <h4>{game.genres[0].name}</h4>
+          <h4>{game.genres?.[0]?.name || "Genre non disponible"}</h4>
           <div className="platforms-rate">
             <div className="platforms">
               {game.parent_platforms
-                .filter((elem) => isPlatformKey(elem.platform.name))
+                ?.filter((elem) => isPlatformKey(elem.platform.name))
                 .map((elem) => (
                   <img
                     key={elem.platform.id}
