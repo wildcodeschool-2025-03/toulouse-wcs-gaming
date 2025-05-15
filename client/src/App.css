@@ -124,18 +124,23 @@ body {
 
 .buttons-platform {
   display: flex;
-  justify-content: space-evenly;
-  width: 80vw;
-  height: 70px;
+  justify-content: center;
+  width: 90vw;
+  height: 80px;
   margin: auto;
   background-color: var(--bleu-clair);
   align-items: center;
   border-radius: 999px;
   text-align: center;
+  gap: 20px;
 
   h3 {
-    font-size: 8px;
+    font-size: 9px;
     color: lightgoldenrodyellow;
+  }
+
+  img {
+    width: 2.5rem;
   }
 }
 
@@ -160,10 +165,6 @@ body {
 .button-playstation {
   flex-direction: row;
   border-radius: 999px;
-
-  img {
-    width: 2rem;
-  }
 }
 
 .button-xbox {
@@ -872,7 +873,7 @@ footer a {
   }
 
   .searchbar {
-    width: 20vw;
+    width: 40vw;
   }
 
   .pub {
@@ -929,10 +930,16 @@ footer a {
     display: flex;
     justify-content: space-evenly;
     width: 50rem;
+    height: 100px;
     margin: auto;
     background-color: var(--bleu-clair);
     align-items: center;
     border-radius: 999px;
+
+    h3 {
+      font-size: 15px;
+      color: white;
+    }
   }
 
   .button-playstation {
@@ -941,29 +948,31 @@ footer a {
     img {
       width: 4rem;
     }
-    h3 {
-      font-size: 15px;
-      color: white;
-    }
   }
 
   .button-xbox {
+    flex-direction: row;
+    text-align: center;
     img {
       width: 4rem;
     }
   }
 
   .button-pc {
-    border-radius: 999px;
+    flex-direction: row;
+    text-align: center;
 
     img {
-      width: 5em;
+      width: 4em;
+      border-radius: 999px;
+    }
+
+    h3 {
+      font-size: 15px;
     }
   }
   .button-nintendo img {
     width: 9rem;
-    border-radius: 999px;
-    background-color: blue;
   }
 }
 

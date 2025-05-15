@@ -53,6 +53,7 @@ function ButtonsPlatform() {
         <Link to={`/categories/${platformIds.pc}`}>
           <img src={platforms.pc} alt="pc" />
         </Link>
+        <h3>pc</h3>
       </div>
 
       <div className="button-nintendo">
