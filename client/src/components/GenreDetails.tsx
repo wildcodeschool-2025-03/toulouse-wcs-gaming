@@ -52,9 +52,11 @@ const GenreDetails = () => {
           </div>
           <h1>{genre.name}</h1>
           <div className="games-container">
-            {games?.map((game) => (
-              <GameCard game={game} key={game.id} />
-            ))}
+            {games
+              ?.filter((game) => game.genres.some((g) => g.name === genre.name))
+              .map((game) => (
+                <GameCard game={game} key={game.id} />
+              ))}
           </div>
         </div>
       </div>

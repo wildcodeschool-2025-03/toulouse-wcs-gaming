@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import UseFetchGames from "../services/UseFetchGames";
 
+import { Link } from "react-router";
 import NintendoIcon from "../assets/images/platforms/NintendoIcon.svg";
 import PcIcon from "../assets/images/platforms/PcIcon.svg";
 import PsIcon from "../assets/images/platforms/PsIcon.svg";
@@ -20,6 +21,20 @@ function GameDetail() {
     Xbox: XboxIcon,
     PlayStation: PsIcon,
     Nintendo: NintendoIcon,
+  };
+
+  interface PlatformIdsType {
+    pc: number[];
+    xbox: number[];
+    playstation: number[];
+    nintendo: number[];
+  }
+
+  const platformIds: PlatformIdsType = {
+    pc: [1, 4, 6, 40849, 5, 31, 40847, 21, 8],
+    xbox: [14],
+    playstation: [3],
+    nintendo: [7],
   };
 
   function isPlatformKey(key: string): key is keyof typeof platformIcons {
@@ -114,19 +129,21 @@ function GameDetail() {
             <h4>{game?.genres[0].name}</h4>
             <p>{description}</p>
             <div className="detail-platform">
-              {game?.parent_platforms
-                .filter((elem) => isPlatformKey(elem.platform.name))
-                .map((elem) => (
-                  <img
-                    key={elem.platform.id}
-                    src={
-                      platformIcons[
-                        elem.platform.name as keyof PlatformIconsType
-                      ]
-                    }
-                    alt=""
-                  />
-                ))}
+              <Link to={`/categories/${platformIds.playstation.join(",")}`}>
+                {game?.parent_platforms
+                  .filter((elem) => isPlatformKey(elem.platform.name))
+                  .map((elem) => (
+                    <img
+                      key={elem.platform.id}
+                      src={
+                        platformIcons[
+                          elem.platform.name as keyof PlatformIconsType
+                        ]
+                      }
+                      alt=""
+                    />
+                  ))}
+              </Link>
             </div>
             <p>Date de sortie : {game?.released}</p>
             <div className="detail-esrb-rate">

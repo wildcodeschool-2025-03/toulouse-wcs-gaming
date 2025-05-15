@@ -25,7 +25,7 @@ p {
 }
 
 body {
-  background: linear-gradient(to right, #0a0f2c, #1e2a5a, #0a0f2c);
+  background: linear-gradient(to right, #040718, #161e41, #040718);
 }
 
 /* --- NAVIGATION --- */
@@ -298,7 +298,8 @@ header {
 }
 
 .card-body:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  transition: 0.5s;
   box-shadow: 0 10px 25px rgb(0, 0, 0, 0, 12);
 }
 
@@ -382,8 +383,6 @@ footer a {
 .category-section h2 {
   color: white;
   text-align: center;
-  color: var(--orange);
-  font-size: 2rem;
 }
 
 .genre-item {
@@ -558,13 +557,17 @@ footer a {
 
 .detail-platform {
   display: flex;
-  flex-wrap: wrap;
-  margin: 2rem;
-  gap: 20px;
+  margin: 4vh 0;
+}
+
+.detail-platform a {
+  display: flex;
+  max-width: 100%;
+  gap: 30px;
 }
 
 .detail-platform img {
-  height: 8vh;
+  height: 5vh;
   margin: 0 auto;
 }
 
@@ -679,7 +682,7 @@ footer a {
   color: white;
   margin: 10vh 0;
   height: 40vh;
-  clip-path: polygon(0 3%, 30% 10%, 100% 0, 100% 100%, 70% 95%, 0 100%);
+  clip-path: polygon(0% 5%, 100% 0, 100% 100%, 0 95%);
 }
 
 .pub-text {
@@ -763,7 +766,19 @@ footer a {
   border: none;
   border-radius: 50%;
   opacity: 0.7;
-  font-weight: 1000;
+  cursor: pointer;
+}
+
+/* -------- HORROR SECTION -------*/
+
+.horror-section {
+  height: 40vh;
+  padding: 3vw;
+  margin: 10vh 0;
+}
+
+.horror-section .pub-text {
+  color: white;
 }
 
 @media screen and (min-width: 768px) {
@@ -832,6 +847,10 @@ footer a {
     opacity: 0.8;
   }
 
+  .genre-item a {
+    text-decoration: none;
+  }
+
   .genre-item:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgb(0, 0, 0, 0, 12);
@@ -854,6 +873,50 @@ footer a {
     height: 90vh;
     clip-path: polygon(0% 10%, 100% 0, 100% 100%, 0 90%);
     margin: 15vh 0;
+  }
+
+  .horror-section {
+    position: relative;
+    height: 80vh;
+    background-blend-mode: multiply;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .torch-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    transition: mask-image 0.2s ease;
+    z-index: 1;
+  }
+
+  .horror-section .pub-text {
+    position: relative;
+    z-index: 2; /* Assure que le texte soit au-dessus de l'overlay */
+  }
+
+  .horror-section {
+    position: relative;
+    height: 80vh;
+    background-blend-mode: multiply;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .torch-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    transition: mask-image 0.2s ease;
+    z-index: 1;
+  }
+
+  .horror-section .pub-text {
+    position: relative;
+    z-index: 2; /* Assure que le texte soit au-dessus de l'overlay */
   }
 
   .buttons-platform {
@@ -895,5 +958,12 @@ footer a {
     width: 9rem;
     border-radius: 999px;
     background-color: blue;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .horror-section {
+    background-color: #6d7188;
+    background-blend-mode: multiply;
   }
 }

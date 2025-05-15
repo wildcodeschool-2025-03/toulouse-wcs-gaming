@@ -37,7 +37,12 @@ function GameCard({ game }: gameProps) {
         </div>
         <div className="card-info">
           <h3>{game.name}</h3>
-          <h4>{game.genres[0].name}</h4>
+          {/* Vérifiez si genres est défini et non vide */}
+          {game.genres && game.genres.length > 0 ? (
+            <h4>{game.genres[0].name}</h4>
+          ) : (
+            <p>Genre non disponible</p>
+          )}
           <div className="platforms-rate">
             <div className="platforms">
               {game.parent_platforms

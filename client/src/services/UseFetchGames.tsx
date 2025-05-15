@@ -11,7 +11,7 @@ export interface Game {
   suggestions_count: number;
   parent_platforms: { platform: { name: string; id: string } }[];
   genres: { name: string; image_background: string }[];
-  esrb_rating: { name: string };
+  esrb_rating: { name: string; id: number };
   short_screenshots: { image: string; id: number }[];
 }
 
@@ -21,27 +21,49 @@ function UseFetchGames() {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const cached = localStorage.getItem("gamesData");
-        const cacheTime = localStorage.getItem("gamesDataTimestamp");
+        const cacheKey = "games-data";
+        const cacheTimeKey = "games-data-timestamp";
+        const cachedGames = localStorage.getItem(cacheKey);
+        const cacheTime = localStorage.getItem(cacheTimeKey);
+
+        const sixHours = 6 * 60 * 60 * 1000;
 
         if (
-          cached &&
+          cachedGames &&
           cacheTime &&
-          Date.now() - Number.parseInt(cacheTime) < 6 * 60 * 60 * 1000
+          Date.now() - Number(cacheTime) < sixHours
         ) {
-          const parsed = JSON.parse(cached);
-          setGames(parsed);
+          setGames(JSON.parse(cachedGames));
+          console.log("Données chargées depuis le local storage");
           return;
         }
 
-        const response = await fetch(
-          "https://api.rawg.io/api/games?key=95d7295d2a97423891de9826bea252cd",
-        );
-        const data = await response.json();
+        let allGames: Game[] = [];
+        for (let page = 1; page <= 30; page++) {
+          const response = await fetch(
+            `https://api.rawg.io/api/games?key=95d7295d2a97423891de9826bea252cd&page=${page}&page_size=20`,
+          );
+          const data = await response.json();
 
-        setGames(data.results);
-        localStorage.setItem("gamesData", JSON.stringify(data.results));
-        localStorage.setItem("gamesDataTimestamp", Date.now().toString());
+          const filteredGames = data.results.filter((game: Game) => {
+            return (
+              game.esrb_rating !== null &&
+              game.esrb_rating?.id !== 5 &&
+              game.genres &&
+              game.genres.length > 0
+            );
+          });
+
+          allGames = [...allGames, ...filteredGames];
+        }
+
+        localStorage.setItem(cacheKey, JSON.stringify(allGames));
+        localStorage.setItem(cacheTimeKey, Date.now().toString());
+
+        setGames(allGames);
+        console.log(
+          "Données chargées depuis l'API et stockées dans le local storage",
+        );
       } catch (error) {
         console.error("Erreur lors du fetch :", error);
       }
