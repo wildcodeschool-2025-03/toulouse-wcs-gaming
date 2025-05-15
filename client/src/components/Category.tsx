@@ -16,7 +16,7 @@ const Categories = () => {
     const fetchGenres = async () => {
       try {
         const response = await fetch(
-          "https://api.rawg.io/api/genres?key=4bc0720168eb4f3a87dbdfbb61bc3461",
+          "https://api.rawg.io/api/genres?key=95d7295d2a97423891de9826bea252cd",
         );
         const data = await response.json();
         console.log(data.results);
