@@ -25,7 +25,7 @@ function Pub() {
     const fetchGame = async () => {
       try {
         const response = await fetch(
-          `https:api.rawg.io/api/games/${gameId}?key=4bc0720168eb4f3a87dbdfbb61bc3461`,
+          `https:api.rawg.io/api/games/${gameId}?key=95d7295d2a97423891de9826bea252cd`,
         );
         const data = await response.json();
         setGame(data);

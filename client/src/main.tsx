@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 
 // Import the main app component
 import App from "./App";
+import CategoryButtons from "./components/CategoryButtons";
 import GameDetail from "./components/GameDetail";
 import GenreDetails from "./components/GenreDetails";
 import Mention from "./components/MentionLegal";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
+  },
+  {
+    path: "/categories/:platformId",
+    element: <CategoryButtons />,
   },
 
   {
