@@ -19,7 +19,7 @@ function Suggestion() {
 
   return (
     <div className="suggestion-container">
-      <h2>Découvrez des titres similaires :</h2>
+      <h2>Découvrez des titres similaires</h2>
       <div className="suggested-cards">
         {suggestedGame.map((game) => (
           <button

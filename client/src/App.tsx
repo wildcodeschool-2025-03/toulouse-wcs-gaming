@@ -2,6 +2,7 @@ import "../src/services/Reset.css";
 import "./App.css";
 import ButtonsPlaform from "./components/ButtonsPlatform";
 import Categories from "./components/Category";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HorrorSection from "./components/HorrorSection";
@@ -20,6 +21,7 @@ function App() {
       <NewSection />
       <Categories />
       <TopGames />
+
       <Pub />
       <MostPopular />
       <HorrorSection />
