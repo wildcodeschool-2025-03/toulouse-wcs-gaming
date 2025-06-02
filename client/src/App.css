@@ -1,5 +1,5 @@
 :root {
-  --bleu-clair: #343f63;
+  --bleu-clair: #081029;
   --orange: #ff5500;
   --font-heading: "Bruno Ace SC", sans-serif;
   --font-text: "Ubuntu", sans-serif;
@@ -133,6 +133,7 @@ a {
   height: 80px;
   margin: 6vh auto;
   background-color: var(--bleu-clair);
+  border: 1px solid white;
   align-items: center;
   border-radius: 999px;
   text-align: center;
@@ -379,11 +380,14 @@ footer a {
 /* --------- section categorie de jeux -------- */
 .horizontal-scroll {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 1em;
   scroll-snap-type: x mandatory;
+  gap: 1em;
+  -webkit-overflow-scrolling: touch;
 }
 
 .category-section h2 {
@@ -856,12 +860,14 @@ footer a {
   }
 
   .horizontal-scroll {
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 75vw;
   }
 
   .genre-item {
+    margin: 2rem 1rem;
     width: 250px;
     opacity: 0.8;
   }
